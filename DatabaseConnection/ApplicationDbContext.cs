@@ -9,16 +9,16 @@ namespace DatabaseConnection
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Trip> Trips { get; set; }
-        public DbSet<TripSites> TripSites { get; }
-        public DbSet<Driver> Drivers { get; }
-        public DbSet<Book> Books { get; }
-        public DbSet<Rating> Ratings { get; }
-        public DbSet<Government> Governments { get; }
-        public DbSet<Site> Sites { get; }
-        public DbSet<Transportation> Transportations { get; }
-        public DbSet<SiteImage> SiteImages { get; }
-        public DbSet<TripExcluded> TripExcludeds { get; }
-        public DbSet<TripIncluded> TripIncludeds { get; }
+        public DbSet<TripSites> TripSites { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Book> Books { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Government> Governments { get; set; }
+        public DbSet<Site> Sites { get; set; }
+        public DbSet<Transportation> Transportations { get; set; }
+        public DbSet<SiteImage> SiteImages { get; set; }
+        public DbSet<TripExcluded> TripExcludeds { get; set; }
+        public DbSet<TripIncluded> TripIncludeds { get; set; }
         public DbSet<TripSiteDetailDto> TripSiteDetails { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
       : base(options)
