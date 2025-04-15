@@ -1,5 +1,6 @@
 
 using DatabaseConnection;
+using Hangfire;
 using IRepositoryService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -10,6 +11,7 @@ using Models;
 using RepositoryFactory;
 using System.Security.Claims;
 using System.Text;
+using WebApplication1.BackGroundJobs;
 using WebApplication1.Middlewares.ExecptionFeatures;
 
 namespace WebApplication1
@@ -37,6 +39,16 @@ namespace WebApplication1
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            builder.Services.AddHangfire(config =>
+    config.UseSqlServerStorage(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddHangfireServer();
+            builder.Services.AddTransient<DailyJob>();
+
+            //RecurringJob.AddOrUpdate
+            //    ("daily-trip-check", (DailyJob job) => job.Run(), "0 0 * * *", TimeZoneInfo.Utc);
+
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -87,6 +99,18 @@ namespace WebApplication1
 
 
             app.MapControllers();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
+
+                recurringJobManager.AddOrUpdate<DailyJob>(
+                    "daily-trip-check",
+                    job => job.Run(),
+                    "0 0 * * *",
+                    TimeZoneInfo.Utc
+                );
+            }
 
             app.Run();
         }

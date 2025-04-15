@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|g:\\mostafa  momeh\\web development\\iti\\final project\\backend\\webapplication1\\controllers\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|solutionrelative:controllers\\tripcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|g:\\mostafa  momeh\\web development\\iti\\final project\\backend\\webapplication1\\backgroundjobs\\dailyjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|solutionrelative:backgroundjobs\\dailyjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|g:\\mostafa  momeh\\web development\\iti\\final project\\backend\\webapplication1\\dtos\\trips\\tripgetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|solutionrelative:dtos\\trips\\tripgetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|g:\\mostafa  momeh\\web development\\iti\\final project\\backend\\webapplication1\\controllers\\sitecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|solutionrelative:controllers\\sitecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|g:\\mostafa  momeh\\web development\\iti\\final project\\backend\\webapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E908093D-387A-4A93-8F44-BA5435F18060}|WebApplication1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,40 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TripController.cs",
-              "DocumentMoniker": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\Controllers\\TripController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TripController.cs",
-              "ToolTip": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\Controllers\\TripController.cs",
-              "RelativeToolTip": "Controllers\\TripController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Title": "DailyJob.cs",
+              "DocumentMoniker": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\BackGroundJobs\\DailyJob.cs",
+              "RelativeDocumentMoniker": "BackGroundJobs\\DailyJob.cs",
+              "ToolTip": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\BackGroundJobs\\DailyJob.cs",
+              "RelativeToolTip": "BackGroundJobs\\DailyJob.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T14:38:17.919Z",
+              "WhenOpened": "2025-04-15T16:04:14.492Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TripGetDto.cs",
-              "DocumentMoniker": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\Dtos\\Trips\\TripGetDto.cs",
-              "RelativeDocumentMoniker": "Dtos\\Trips\\TripGetDto.cs",
-              "ToolTip": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\Dtos\\Trips\\TripGetDto.cs",
-              "RelativeToolTip": "Dtos\\Trips\\TripGetDto.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T14:38:08.562Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SiteController.cs",
-              "DocumentMoniker": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\Controllers\\SiteController.cs",
-              "RelativeDocumentMoniker": "Controllers\\SiteController.cs",
-              "ToolTip": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\Controllers\\SiteController.cs",
-              "RelativeToolTip": "Controllers\\SiteController.cs",
-              "ViewState": "AgIAALcAAAAAAAAAAAAAAJYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-13T14:30:09.105Z",
+              "WhenOpened": "2025-04-15T15:32:21.239Z",
               "EditorCaption": ""
             }
           ]
