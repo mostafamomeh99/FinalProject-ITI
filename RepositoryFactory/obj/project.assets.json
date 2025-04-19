@@ -3116,23 +3116,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\El-Wattaneya\\.nuget\\packages\\": {},
+    "C:\\Users\\AHiba\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\RepositoryFactory\\RepositoryFactory.csproj",
+      "projectUniqueName": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\RepositoryFactory\\RepositoryFactory.csproj",
       "projectName": "RepositoryFactory",
-      "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\RepositoryFactory\\RepositoryFactory.csproj",
-      "packagesPath": "C:\\Users\\El-Wattaneya\\.nuget\\packages\\",
-      "outputPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\RepositoryFactory\\obj\\",
+      "projectPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\RepositoryFactory\\RepositoryFactory.csproj",
+      "packagesPath": "C:\\Users\\AHiba\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\RepositoryFactory\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\El-Wattaneya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AHiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3141,14 +3141,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj": {
-              "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj"
+            "C:\\Users\\AHiba\\Desktop\\FinalProject1\\IRepository\\IRepositoryService.csproj": {
+              "projectPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\IRepository\\IRepositoryService.csproj"
             }
           }
         }

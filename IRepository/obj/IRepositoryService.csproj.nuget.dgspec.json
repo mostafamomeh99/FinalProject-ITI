@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj": {}
+    "C:\\Users\\AHiba\\Desktop\\FinalProject1\\IRepository\\IRepositoryService.csproj": {}
   },
   "projects": {
-    "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\DatabaseConnection\\DatabaseConnection.csproj": {
+    "C:\\Users\\AHiba\\Desktop\\FinalProject1\\DatabaseConnection\\DatabaseConnection.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\DatabaseConnection\\DatabaseConnection.csproj",
+        "projectUniqueName": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\DatabaseConnection\\DatabaseConnection.csproj",
         "projectName": "DatabaseConnection",
-        "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\DatabaseConnection\\DatabaseConnection.csproj",
-        "packagesPath": "C:\\Users\\El-Wattaneya\\.nuget\\packages\\",
-        "outputPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\DatabaseConnection\\obj\\",
+        "projectPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\DatabaseConnection\\DatabaseConnection.csproj",
+        "packagesPath": "C:\\Users\\AHiba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\DatabaseConnection\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\El-Wattaneya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AHiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj": {
-                "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj"
+              "C:\\Users\\AHiba\\Desktop\\FinalProject1\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\Models\\Models.csproj"
               }
             }
           }
@@ -93,20 +94,20 @@
         }
       }
     },
-    "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj": {
+    "C:\\Users\\AHiba\\Desktop\\FinalProject1\\IRepository\\IRepositoryService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj",
+        "projectUniqueName": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\IRepository\\IRepositoryService.csproj",
         "projectName": "IRepositoryService",
-        "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj",
-        "packagesPath": "C:\\Users\\El-Wattaneya\\.nuget\\packages\\",
-        "outputPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\obj\\",
+        "projectPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\IRepository\\IRepositoryService.csproj",
+        "packagesPath": "C:\\Users\\AHiba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\IRepository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\El-Wattaneya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AHiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -115,14 +116,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\DatabaseConnection\\DatabaseConnection.csproj": {
-                "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\DatabaseConnection\\DatabaseConnection.csproj"
+              "C:\\Users\\AHiba\\Desktop\\FinalProject1\\DatabaseConnection\\DatabaseConnection.csproj": {
+                "projectPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\DatabaseConnection\\DatabaseConnection.csproj"
               }
             }
           }
@@ -168,20 +170,20 @@
         }
       }
     },
-    "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj": {
+    "C:\\Users\\AHiba\\Desktop\\FinalProject1\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\El-Wattaneya\\.nuget\\packages\\",
-        "outputPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\obj\\",
+        "projectPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\AHiba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AHiba\\Desktop\\FinalProject1\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\El-Wattaneya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AHiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -190,6 +192,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

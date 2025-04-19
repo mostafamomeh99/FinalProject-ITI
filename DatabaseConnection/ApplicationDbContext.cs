@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using finalProject.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Models;
@@ -20,6 +21,10 @@ namespace DatabaseConnection
         public DbSet<TripExcluded> TripExcludeds { get; set; }
         public DbSet<TripIncluded> TripIncludeds { get; set; }
         public DbSet<TripSiteDetailDto> TripSiteDetails { get; set; }
+        //blog dbset
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
       : base(options)
         {
