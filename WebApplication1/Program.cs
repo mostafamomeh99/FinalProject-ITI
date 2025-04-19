@@ -28,7 +28,15 @@ namespace WebApplication1
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors(op =>
+            {
+                op.AddPolicy("AllowAnyUser", policy =>
+                {
+                    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+                
 
+            });
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -97,7 +105,7 @@ namespace WebApplication1
             app.UseAuthentication();
             app.UseAuthorization();
 
-
+            app.UseCors("AllowAnyUser");
             app.MapControllers();
 
             using (var scope = app.Services.CreateScope())
