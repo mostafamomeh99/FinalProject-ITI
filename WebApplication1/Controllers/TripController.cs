@@ -199,7 +199,7 @@ namespace WebApplication1.Controllers
 
             var newTrip = new Trip
             {
-                TripId = Guid.NewGuid().ToString(),
+                TripId = tripDto.Id,
                 Name = tripDto.Name,
                 Description = tripDto.Description,
                 StartDate = tripDto.StartDate,
