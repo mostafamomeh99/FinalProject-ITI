@@ -10,3 +10,16 @@ G:\mostafa  momeh\web development\ITI\final project\backend\Models\obj\Debug\net
 G:\mostafa  momeh\web development\ITI\final project\backend\Models\obj\Debug\net9.0\refint\Models.dll
 G:\mostafa  momeh\web development\ITI\final project\backend\Models\obj\Debug\net9.0\Models.pdb
 G:\mostafa  momeh\web development\ITI\final project\backend\Models\obj\Debug\net9.0\ref\Models.dll
+C:\Users\AHiba\Desktop\FinalProject1\Models\bin\Debug\net9.0\Models.deps.json
+C:\Users\AHiba\Desktop\FinalProject1\Models\bin\Debug\net9.0\Models.dll
+C:\Users\AHiba\Desktop\FinalProject1\Models\bin\Debug\net9.0\Models.pdb
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.csproj.AssemblyReference.cache
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.AssemblyInfoInputs.cache
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.AssemblyInfo.cs
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.csproj.CoreCompileInputs.cache
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.sourcelink.json
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.dll
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\refint\Models.dll
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.pdb
+C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\ref\Models.dll
