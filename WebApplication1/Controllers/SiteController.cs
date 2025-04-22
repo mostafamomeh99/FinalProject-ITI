@@ -27,8 +27,8 @@ namespace WebApplication1.Controllers
 
             List<SiteGetDto> sites = new List<SiteGetDto>();
             var dbsites = unitOFWork.Sites.GetAllWith(new[] { "SiteImages" },
-                ((pagenumber - 1) * ConstantProject.NumberOfData),
-                ConstantProject.NumberOfData);
+             take: ConstantProject.NumberOfData, skip: ((pagenumber - 1) * ConstantProject.NumberOfData)
+            );
 
             foreach (var sit in dbsites)
             {

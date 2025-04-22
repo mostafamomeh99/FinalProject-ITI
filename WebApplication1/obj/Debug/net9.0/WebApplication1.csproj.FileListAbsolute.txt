@@ -204,7 +204,6 @@ G:\mostafa  momeh\web development\ITI\final project\backend\WebApplication1\bin\
 G:\mostafa  momeh\web development\ITI\final project\backend\WebApplication1\bin\Debug\net9.0\tr-TR\Hangfire.Core.resources.dll
 G:\mostafa  momeh\web development\ITI\final project\backend\WebApplication1\bin\Debug\net9.0\zh-TW\Hangfire.Core.resources.dll
 G:\mostafa  momeh\web development\ITI\final project\backend\WebApplication1\bin\Debug\net9.0\zh\Hangfire.Core.resources.dll
-G:\mostafa  momeh\web development\ITI\final project\backend\WebApplication1\obj\Debug\net9.0\WebApplication1.sourcelink.json
 C:\Users\AHiba\Desktop\FinalProject1\WebApplication1\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\AHiba\Desktop\FinalProject1\WebApplication1\bin\Debug\net9.0\appsettings.json
 C:\Users\AHiba\Desktop\FinalProject1\WebApplication1\bin\Debug\net9.0\WebApplication1.staticwebassets.runtime.json

@@ -23,3 +23,4 @@ C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.dll
 C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\refint\Models.dll
 C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\Models.pdb
 C:\Users\AHiba\Desktop\FinalProject1\Models\obj\Debug\net9.0\ref\Models.dll
+G:\mostafa  momeh\web development\ITI\final project\backend\Models\obj\Debug\net9.0\Models.sourcelink.json
