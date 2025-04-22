@@ -48,7 +48,7 @@ namespace WebApplication1.Controllers
          var existgovernment=unitOFWork.Governments
                 .FindAll(e => e.Name.ToLower().Contains(government.Name.ToLower()));
 
-            if(existgovernment != null) throw new CustomExecption("government already exist");
+            if(existgovernment.Count() != 0) throw new CustomExecption("government already exist");
 
             string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
             if (!Directory.Exists(imagesDirectory))
