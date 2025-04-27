@@ -42,7 +42,8 @@ namespace WebApplication1.Controllers
         {
 
             var transportation = new Transportation()
-            {
+            {   
+                Id = transportationDto.Id,
                 Name = transportationDto.Name
             };
 

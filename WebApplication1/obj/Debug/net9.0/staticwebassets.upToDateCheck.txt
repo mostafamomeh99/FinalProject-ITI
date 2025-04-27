@@ -1,3 +1,5 @@
+wwwroot\images\1da237ca-29d0-4c92-a288-5fbdbd25ccb5.png
+wwwroot\images\51068fc0-ada6-41f5-b069-9bc202af786a.png
 wwwroot\images\alexandria.png
 wwwroot\images\assiut.jpg
 wwwroot\images\aswan.jpg
