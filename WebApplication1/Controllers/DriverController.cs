@@ -20,27 +20,43 @@ namespace WebApplication1.Controllers
             this.unitOFWork = unitOFWork;
         }
 
+        //[HttpGet]
+        //public IActionResult GetDrivers([FromQuery] int pagenumber)
+        //{
+        //    if (pagenumber <= 0) { return BadRequest(new {message= "Invalid page number."}); }
+
+        //    List<DriverGetDto> drivers = new List<DriverGetDto>();
+        //    var dbDrivers = unitOFWork.Drivers.GetAllWith(
+        //        new[] {"Transportation"} 
+        //        ,skip: ((pagenumber - 1)* ConstantProject.NumberOfData),
+        //        take: ConstantProject.NumberOfData); 
+
+        //    foreach (var driver in dbDrivers)
+        //    {
+        //        drivers.Add(new DriverGetDto()
+        //        {
+        //            Id = driver.Id,
+        //            Name = driver.Name,
+        //            TransportationId = driver.TransportationId,
+        //            TransportationName = driver.Transportation.Name 
+        //        });
+        //    }
+
+        //    return Ok(drivers);
+        //}
+
         [HttpGet]
-        public IActionResult GetDrivers([FromQuery] int pagenumber)
+        public IActionResult GetDrivers()
         {
-            if (pagenumber <= 0) { return BadRequest(new {message= "Invalid page number."}); }
+            var dbDrivers = unitOFWork.Drivers.GetAllWith(new[] { "Transportation" });
 
-            List<DriverGetDto> drivers = new List<DriverGetDto>();
-            var dbDrivers = unitOFWork.Drivers.GetAllWith(
-                new[] {"Transportation"} 
-                ,skip: ((pagenumber - 1)* ConstantProject.NumberOfData),
-                take: ConstantProject.NumberOfData); 
-
-            foreach (var driver in dbDrivers)
+            var drivers = dbDrivers.Select(driver => new DriverGetDto
             {
-                drivers.Add(new DriverGetDto()
-                {
-                    Id = driver.Id,
-                    Name = driver.Name,
-                    TransportationId = driver.TransportationId,
-                    TransportationName = driver.Transportation.Name 
-                });
-            }
+                Id = driver.Id,
+                Name = driver.Name,
+                TransportationId = driver.TransportationId,
+                TransportationName = driver.Transportation.Name
+            }).ToList();
 
             return Ok(drivers);
         }
