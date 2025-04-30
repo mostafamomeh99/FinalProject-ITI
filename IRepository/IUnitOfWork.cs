@@ -24,7 +24,7 @@ namespace IRepositoryService
         public IDatabaseRepository<TripExcluded> TripExcludeds { get; }
         public IDatabaseRepository<TripIncluded> TripIncludeds { get; }
         public ISqlProcedureService<TripSiteDetailDto> TripSiteDetails { get;}
-
+        public IGrokService GrokService { get; }
         Task CommitTransactionAsync();
         Task<IDbContextTransaction> BeginTransactionAsync();
         Task RollbackTransactionAsync();

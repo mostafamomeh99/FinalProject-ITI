@@ -19,6 +19,8 @@ namespace RepositoryFactory
         private readonly ApplicationDbContext context;
         private readonly IEmailService emailService;
         private readonly IOtpService OtpService;
+        public IGrokService GrokService { get; private set; }
+
         private IDbContextTransaction currentTransaction;
         public IAccountRepository Accounts { get; private set; }
         public IDatabaseRepository<Trip> Trips { get; private set; }
@@ -35,7 +37,7 @@ namespace RepositoryFactory
 
         public ISqlProcedureService<TripSiteDetailDto> TripSiteDetails { get; private set; }
         public UnitOfWork(ApplicationDbContext context, IEmailService emailService, IConfiguration configuration
-  , UserManager<ApplicationUser> userManager, IOtpService otpService)
+  , UserManager<ApplicationUser> userManager, IOtpService otpService ,  HttpClient httpClient)
         {
             this.context = context;
             this.emailService = emailService;
@@ -53,6 +55,7 @@ namespace RepositoryFactory
             Drivers = new DatabaseRepository<Driver>(context);
             OtpService = otpService;
             TripSiteDetails = new SqlProcedureService<TripSiteDetailDto>(context);
+            GrokService = new GrokService(httpClient, configuration);
         }
         public int Compelet()
         {

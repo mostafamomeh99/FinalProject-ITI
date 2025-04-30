@@ -792,23 +792,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AHiba\\.nuget\\packages\\": {},
+    "C:\\Users\\El-Wattaneya\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AHiba\\Source\\Repos\\FinalProject-ITI\\Models\\Models.csproj",
+      "projectUniqueName": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\Users\\AHiba\\Source\\Repos\\FinalProject-ITI\\Models\\Models.csproj",
-      "packagesPath": "C:\\Users\\AHiba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AHiba\\Source\\Repos\\FinalProject-ITI\\Models\\obj\\",
+      "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\El-Wattaneya\\.nuget\\packages\\",
+      "outputPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\AHiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\El-Wattaneya\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -817,7 +817,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
