@@ -465,6 +465,22 @@
     ]
   },
   {
+    "ContainingType": "WebApplication1.Controllers.ChatController",
+    "Method": "GetResponse",
+    "RelativePath": "api/Chat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usermessages",
+        "Type": "System.Collections.Generic.List\u00601[[WebApplication1.Dtos.ChatBot.ChatBotSendDto, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApplication1.Controllers.DriverController",
     "Method": "GetDrivers",
     "RelativePath": "api/Driver",

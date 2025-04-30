@@ -5688,23 +5688,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\El-Wattaneya\\.nuget\\packages\\": {},
+    "C:\\Users\\mosta\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\WebApplication1.csproj",
-      "packagesPath": "C:\\Users\\El-Wattaneya\\.nuget\\packages\\",
-      "outputPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\WebApplication1\\obj\\",
+      "projectPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\WebApplication1.csproj",
+      "packagesPath": "C:\\Users\\mosta\\.nuget\\packages\\",
+      "outputPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\El-Wattaneya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mosta\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5719,14 +5719,14 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\DatabaseConnection\\DatabaseConnection.csproj": {
-              "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\DatabaseConnection\\DatabaseConnection.csproj"
+            "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\DatabaseConnection\\DatabaseConnection.csproj": {
+              "projectPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\DatabaseConnection\\DatabaseConnection.csproj"
             },
-            "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj": {
-              "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj"
+            "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\IRepository\\IRepositoryService.csproj": {
+              "projectPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\IRepository\\IRepositoryService.csproj"
             },
-            "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\RepositoryFactory\\RepositoryFactory.csproj": {
-              "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\RepositoryFactory\\RepositoryFactory.csproj"
+            "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\RepositoryFactory\\RepositoryFactory.csproj": {
+              "projectPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\RepositoryFactory\\RepositoryFactory.csproj"
             }
           }
         }
@@ -5801,7 +5801,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

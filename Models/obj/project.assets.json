@@ -792,23 +792,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\El-Wattaneya\\.nuget\\packages\\": {},
+    "C:\\Users\\mosta\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj",
+      "projectUniqueName": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\Models\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\Models.csproj",
-      "packagesPath": "C:\\Users\\El-Wattaneya\\.nuget\\packages\\",
-      "outputPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\Models\\obj\\",
+      "projectPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\Models\\Models.csproj",
+      "packagesPath": "C:\\Users\\mosta\\.nuget\\packages\\",
+      "outputPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\El-Wattaneya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mosta\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -862,7 +862,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

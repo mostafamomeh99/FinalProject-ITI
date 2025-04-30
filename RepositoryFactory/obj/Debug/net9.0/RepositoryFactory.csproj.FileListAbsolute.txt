@@ -58,3 +58,23 @@ C:\Users\AHiba\Source\Repos\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\
 C:\Users\AHiba\Source\Repos\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\refint\RepositoryFactory.dll
 C:\Users\AHiba\Source\Repos\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.pdb
 C:\Users\AHiba\Source\Repos\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\ref\RepositoryFactory.dll
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\RepositoryFactory.deps.json
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\RepositoryFactory.dll
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\RepositoryFactory.pdb
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\DatabaseConnection.dll
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\IRepositoryService.dll
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\Models.dll
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\IRepositoryService.pdb
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\DatabaseConnection.pdb
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\bin\Debug\net9.0\Models.pdb
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.csproj.AssemblyReference.cache
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.GeneratedMSBuildEditorConfig.editorconfig
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.AssemblyInfoInputs.cache
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.AssemblyInfo.cs
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.csproj.CoreCompileInputs.cache
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.sourcelink.json
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\Reposito.A818C77C.Up2Date
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.dll
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\refint\RepositoryFactory.dll
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\RepositoryFactory.pdb
+D:\iti\Final Project\backend\FinalProject-ITI\RepositoryFactory\obj\Debug\net9.0\ref\RepositoryFactory.dll
