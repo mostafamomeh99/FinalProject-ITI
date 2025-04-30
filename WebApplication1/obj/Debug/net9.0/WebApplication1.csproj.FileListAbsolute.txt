@@ -814,4 +814,6 @@ D:\iti\Final Project\backend\FinalProject-ITI\WebApplication1\obj\Debug\net9.0\r
 D:\iti\Final Project\backend\FinalProject-ITI\WebApplication1\obj\Debug\net9.0\WebApplication1.pdb
 D:\iti\Final Project\backend\FinalProject-ITI\WebApplication1\obj\Debug\net9.0\WebApplication1.genruntimeconfig.cache
 D:\iti\Final Project\backend\FinalProject-ITI\WebApplication1\obj\Debug\net9.0\ref\WebApplication1.dll
+D:\iti\Final Project\backend\FinalProject-ITI\WebApplication1\bin\Debug\net9.0\Controllers\appsettings.Development.json
+D:\iti\Final Project\backend\FinalProject-ITI\WebApplication1\bin\Debug\net9.0\Controllers\appsettings.json
 D:\iti\Final Project\backend\FinalProject-ITI\WebApplication1\bin\Debug\net9.0\Stripe.net.dll

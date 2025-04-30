@@ -219,21 +219,25 @@ namespace RepositoryFactory
             }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public async Task<T> GetByStringIdAsync(string id)
+        {
+            return await context.Set<T>().FindAsync(id);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+}
 

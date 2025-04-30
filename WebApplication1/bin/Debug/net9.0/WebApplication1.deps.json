@@ -18,7 +18,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.4",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.4",
           "RepositoryFactory": "1.0.0",
-          "Stripe.net": "48.0.2",
+          "Stripe.net": "48.1.0",
           "Swashbuckle.AspNetCore": "8.1.0"
         },
         "runtime": {
@@ -960,15 +960,15 @@
           }
         }
       },
-      "Stripe.net/48.0.2": {
+      "Stripe.net/48.1.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "System.Configuration.ConfigurationManager": "8.0.0"
         },
         "runtime": {
           "lib/net8.0/Stripe.net.dll": {
-            "assemblyVersion": "48.0.2.0",
-            "fileVersion": "48.0.2.0"
+            "assemblyVersion": "48.1.0.0",
+            "fileVersion": "48.1.0.0"
           }
         }
       },
@@ -1206,8 +1206,7 @@
       "IRepositoryService/1.0.0": {
         "dependencies": {
           "DatabaseConnection": "1.0.0",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.4",
-          "Stripe.net": "48.0.2"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.4"
         },
         "runtime": {
           "IRepositoryService.dll": {
@@ -1218,8 +1217,7 @@
       },
       "Models/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.4",
-          "Stripe.net": "48.0.2"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.4"
         },
         "runtime": {
           "Models.dll": {
@@ -1234,8 +1232,7 @@
           "Microsoft.EntityFrameworkCore": "9.0.4",
           "Microsoft.Extensions.Configuration": "9.0.4",
           "Microsoft.Extensions.Configuration.Binder": "9.0.4",
-          "Otp.NET": "1.4.0",
-          "Stripe.net": "48.0.2"
+          "Otp.NET": "1.4.0"
         },
         "runtime": {
           "RepositoryFactory.dll": {
@@ -1679,12 +1676,12 @@
       "path": "otp.net/1.4.0",
       "hashPath": "otp.net.1.4.0.nupkg.sha512"
     },
-    "Stripe.net/48.0.2": {
+    "Stripe.net/48.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Ygn4kVkhNL9acuHTYZptbbjVetagBbvbrCt3uAkeeEJgYo62xaMHGb4ljvKpeyPmGyGsLnIOqH/z6s9eh+xZug==",
-      "path": "stripe.net/48.0.2",
-      "hashPath": "stripe.net.48.0.2.nupkg.sha512"
+      "sha512": "sha512-xrc6KfpzBphA1EIqF9ALgxaJf7LSJVQUefH3j0+5RS5Mn0NrEmIk4g7VfoqGQot73CH7RomiOGNnGVmLcN9mtg==",
+      "path": "stripe.net/48.1.0",
+      "hashPath": "stripe.net.48.1.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/8.1.0": {
       "type": "package",

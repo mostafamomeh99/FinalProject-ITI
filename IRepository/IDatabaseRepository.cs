@@ -28,5 +28,9 @@ namespace IRepositoryService
         int Count();
         int Count(Expression<Func<T, bool>> match);
 
+        Task<T> GetByStringIdAsync(string id);
+
+
+
     }
 }
