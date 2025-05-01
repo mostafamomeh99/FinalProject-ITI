@@ -29,7 +29,7 @@ namespace WebApplication1.Controllers
             {
                 if (item.Message.Length >= 14000) {
                     // check message length
-                    return BadRequest(new { message = "message is too long" });
+                    return BadRequest(new { Role = "error", Message = "message is too long" });
                 }
                 roles.Add(item.Role);
                 messages.Add(item.Message);
@@ -41,13 +41,13 @@ namespace WebApplication1.Controllers
             var result = await unitOFWork.GrokService.SendMessage(messages, roles);
             if(result == null)
             {
-                return BadRequest(new { message = "something went wrong please try again" });
+                return BadRequest(new { Role = "error", Message = "something went wrong please try again" });
             }
 
             if (result.ContainsKey("error"))
             {
                 var errorMessage = result["error"]?.ToString();
-                return BadRequest(new { message = errorMessage });
+                return BadRequest(new { Role = "error", Message = "something went wrong , please try again" });
             }
 
             string role = result["choices"][0]["message"]["role"]?.ToString();

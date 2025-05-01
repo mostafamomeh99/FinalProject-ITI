@@ -103,102 +103,130 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateSite([FromBody] SiteUpdateDto sitedto)
+        [Consumes("multipart/form-data")]
+     
+        public IActionResult UpdateSite([FromForm] SiteUpdateDto sitedto)
         {
-            //there is no images in any places
-            if (sitedto.images == null && (sitedto.siteImages == null || !sitedto.siteImages.Any()))
+            try
             {
-                return BadRequest(new { message = "site image is requried" });
-            }
-            // check site exists
+                if (!ModelState.IsValid)
+                {
+                    // Log all validation errors
+                    var errors = ModelState
+                        .Where(e => e.Value.Errors.Count > 0)
+                        .Select(e => new {
+                            Field = e.Key,
+                            Errors = e.Value.Errors.Select(error => error.ErrorMessage)
+                        }).ToList();
+
+                    Console.WriteLine("Validation errors:");
+                    foreach (var error in errors)
+                    {
+                        Console.WriteLine($"{error.Field}: {string.Join(", ", error.Errors)}");
+                    }
+
+                    return BadRequest(new
+                    {
+                        message = "Validation failed",
+                        errors = errors
+                    });
+                }
+
+                // Check if we have any images at all
+                bool hasNewImages = sitedto.Images != null && sitedto.Images.Any();
+                bool hasExistingImages = sitedto.SiteImages != null && sitedto.SiteImages.Any();
+
+                if (!hasNewImages && !hasExistingImages)
+                {
+                    return BadRequest(new { message = "At least one image is required" });
+                }
+
+                // check site exists
                 var dbsite = unitOFWork.Sites.Findme(e => e.SiteId == sitedto.Id, new[] { "SiteImages" });
 
-            if (dbsite == null) return BadRequest(new { message = "site not found" });
+                if (dbsite == null) return BadRequest(new { message = "Site not found" });
 
-            // check government exists
-            var existgovernment = unitOFWork.Governments.FindAll(e => e.GovernmentId == sitedto.GovernmentId);
-            if (!existgovernment.Any()) throw new CustomExecption("government is not exist");
+                // check government exists
+                var existgovernment = unitOFWork.Governments.FindAll(e => e.GovernmentId == sitedto.GovernmentId);
+                if (!existgovernment.Any())
+                    return BadRequest(new { message = "Government does not exist" });
 
-            dbsite.SiteName = sitedto.Name;
-            dbsite.GovernmentId = sitedto.GovernmentId;
-            dbsite.SiteDescription = sitedto.Description;
+                // Update basic info
+                dbsite.SiteName = sitedto.Name;
+                dbsite.GovernmentId = sitedto.GovernmentId;
+                dbsite.SiteDescription = sitedto.Description;
 
-
-            string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-            if (!Directory.Exists(imagesDirectory))
-            {
-                Directory.CreateDirectory(imagesDirectory);
-            }
-
-            // compare exisitng images first 
-
-            if (sitedto.siteImages.Any())
-            {
-                foreach (var existimg in dbsite.SiteImages)
+                string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+                if (!Directory.Exists(imagesDirectory))
                 {
-                    // delete what is in database and not in cominglist
-                    var comingimg =sitedto.siteImages.FirstOrDefault(e => e.Id == existimg.Id);
-                    if (comingimg == null)
+                    Directory.CreateDirectory(imagesDirectory);
+                }
+
+                // Handle existing images
+                if (hasExistingImages)
+                {
+                    // Find images to remove (exist in DB but not in incoming list)
+                    var imagesToRemove = dbsite.SiteImages
+                        .Where(dbImg => !sitedto.SiteImages.Any(si => si.Image == dbImg.ImageName))
+                        .ToList();
+
+                    foreach (var imgToRemove in imagesToRemove)
                     {
-                        // delete image file from server
+                        // Delete file
+                        string fullPath = Path.Combine(imagesDirectory, imgToRemove.ImageName);
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+                        unitOFWork.SiteImages.Delete(imgToRemove);
+                    }
+                }
+                else
+                {
+                    // No existing images in request - delete all
+                    foreach (var existimg in dbsite.SiteImages)
+                    {
                         string fullPath = Path.Combine(imagesDirectory, existimg.ImageName);
                         if (System.IO.File.Exists(fullPath))
                         {
                             System.IO.File.Delete(fullPath);
                         }
-
-                        unitOFWork.SiteImages.Delete(existimg);
-
                     }
+                    unitOFWork.SiteImages.DeleteRange(dbsite.SiteImages);
                 }
-            }
-            // siteimages is empty , so user want to delete all exisitng
-            else
-            {
-                foreach (var existimg in dbsite.SiteImages)
+
+                // Add new images
+                if (hasNewImages)
                 {
-                    string fullPath = Path.Combine(imagesDirectory, existimg.ImageName);
-                    if (System.IO.File.Exists(fullPath))
+                    foreach (var image in sitedto.Images)
                     {
-                        System.IO.File.Delete(fullPath);
+                        if (image.Length > 0)
+                        {
+                            string fileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+                            string filePath = Path.Combine(imagesDirectory, fileName);
+
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                image.CopyTo(stream);
+                            }
+
+                            unitOFWork.SiteImages.Addone(new SiteImage
+                            {
+                                SiteId = sitedto.Id,
+                                ImageName = fileName
+                            });
+                        }
                     }
                 }
 
-                unitOFWork.SiteImages.DeleteRange(dbsite.SiteImages);
-          
- 
+                unitOFWork.Compelet();
+                return Ok(new { message = "Site updated successfully" });
             }
-
-            // add new images
-            if(sitedto.images != null && sitedto.images.Count>0)
-            { 
-            foreach (var image in sitedto.images)
+            catch (Exception ex)
             {
-                if (image.Length > 0)
-                {
-                    string fileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
-                    string filePath = Path.Combine(imagesDirectory, fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        image.CopyTo(stream);
-                    }
-
-                    // Save the file path in the database
-                    var siteimage = new SiteImage
-                    {
-                  SiteId=sitedto.Id ,
-                  ImageName=fileName
-                    };
-                    unitOFWork.SiteImages.Addone(siteimage);
-                }
+                return BadRequest(new { message = ex.Message });
             }
-            }
-            unitOFWork.Compelet();
-
-            return Ok(new { message = "site updated successfully" });
         }
-
         [HttpDelete("{id}")]
         public IActionResult DeleteSite([FromRoute] string id)
         {

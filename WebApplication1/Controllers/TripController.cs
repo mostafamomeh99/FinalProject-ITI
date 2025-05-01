@@ -221,7 +221,7 @@ namespace WebApplication1.Controllers
 
             var newTrip = new Trip
             {
-                TripId = tripDto.Id,
+                TripId = tripDto.tripId,
                 Name = tripDto.Name,
                 Description = tripDto.Description,
                 StartDate = tripDto.StartDate,

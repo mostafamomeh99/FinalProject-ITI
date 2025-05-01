@@ -786,9 +786,34 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "sitedto",
-        "Type": "WebApplication1.Dtos.Sites.SiteUpdateDto",
-        "IsRequired": true
+        "Name": "Id",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "GovernmentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "SiteImages",
+        "Type": "System.Collections.Generic.List\u00601[[WebApplication1.Dtos.Sites.SiteImagesGetDto, WebApplication1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Images",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
