@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/Gbn2fSykKTB+F4HhxZjeDKXPeGwdNaQy7nEYJLeVY8=",
+  "Hash": "9JMFNZXAUUQ5RQ1n2qRj2whm8HeiBdyH/+JtySe/aOI=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -185,6 +185,27 @@
       "OriginalItemSpec": "wwwroot\\images\\cairo.jpg"
     },
     {
+      "Identity": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\d41e52e1-1c85-4b7b-9b2d-913ef9522bf9.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "images/d41e52e1-1c85-4b7b-9b2d-913ef9522bf9#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0p51jx6ka9",
+      "Integrity": "7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\d41e52e1-1c85-4b7b-9b2d-913ef9522bf9.jpg"
+    },
+    {
       "Identity": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\dakahlia.jpg",
       "SourceId": "WebApplication1",
       "SourceType": "Discovered",
@@ -225,6 +246,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\damietta.jpg"
+    },
+    {
+      "Identity": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\f82237a1-5808-4aa0-afcc-37e73bdb43e0.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "images/f82237a1-5808-4aa0-afcc-37e73bdb43e0#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0p51jx6ka9",
+      "Integrity": "7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\f82237a1-5808-4aa0-afcc-37e73bdb43e0.jpg"
     },
     {
       "Identity": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\fayoum.jpg",
@@ -1326,6 +1368,88 @@
       ]
     },
     {
+      "Route": "images/d41e52e1-1c85-4b7b-9b2d-913ef9522bf9.0p51jx6ka9.jpg",
+      "AssetFile": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\d41e52e1-1c85-4b7b-9b2d-913ef9522bf9.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2726101"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 22:16:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0p51jx6ka9"
+        },
+        {
+          "Name": "label",
+          "Value": "images/d41e52e1-1c85-4b7b-9b2d-913ef9522bf9.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o="
+        }
+      ]
+    },
+    {
+      "Route": "images/d41e52e1-1c85-4b7b-9b2d-913ef9522bf9.jpg",
+      "AssetFile": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\d41e52e1-1c85-4b7b-9b2d-913ef9522bf9.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2726101"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 22:16:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o="
+        }
+      ]
+    },
+    {
       "Route": "images/dakahlia.jpg",
       "AssetFile": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\dakahlia.jpg",
       "Selectors": [],
@@ -1486,6 +1610,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-VjisHAZm370aVHAdI6rXgcMv8WvjKInCLds6TsrbA7s="
+        }
+      ]
+    },
+    {
+      "Route": "images/f82237a1-5808-4aa0-afcc-37e73bdb43e0.0p51jx6ka9.jpg",
+      "AssetFile": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\f82237a1-5808-4aa0-afcc-37e73bdb43e0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2726101"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 22:21:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0p51jx6ka9"
+        },
+        {
+          "Name": "label",
+          "Value": "images/f82237a1-5808-4aa0-afcc-37e73bdb43e0.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o="
+        }
+      ]
+    },
+    {
+      "Route": "images/f82237a1-5808-4aa0-afcc-37e73bdb43e0.jpg",
+      "AssetFile": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\WebApplication1\\wwwroot\\images\\f82237a1-5808-4aa0-afcc-37e73bdb43e0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2726101"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 30 Apr 2025 22:21:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7LXzoMp/vmT+PBIG2MjwES4C7bhAz18IDqflUQE2r1o="
         }
       ]
     },

@@ -22,5 +22,8 @@ namespace WebApplication1.Dtos.Trips
         public int MaxPeople { get; set; }
         public bool IsDeleted { get; set; }
         public bool OutOfDate { get; set; }
+
+        public List<string> IncludedItems { get; set; } = new();
+        public List<string> ExcludedItems { get; set; } = new();
     }
 }

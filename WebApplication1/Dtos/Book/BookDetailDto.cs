@@ -13,6 +13,8 @@
         public int NumberPeople { get; set; }
         public decimal AmountMoney { get; set; }
 
+
+
     
     }
 }

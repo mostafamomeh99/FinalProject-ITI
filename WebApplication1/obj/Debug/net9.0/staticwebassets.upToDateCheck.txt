@@ -6,8 +6,10 @@ wwwroot\images\aswan.jpg
 wwwroot\images\beheira.jpg
 wwwroot\images\benisuef.jpg
 wwwroot\images\cairo.jpg
+wwwroot\images\d41e52e1-1c85-4b7b-9b2d-913ef9522bf9.jpg
 wwwroot\images\dakahlia.jpg
 wwwroot\images\damietta.jpg
+wwwroot\images\f82237a1-5808-4aa0-afcc-37e73bdb43e0.jpg
 wwwroot\images\fayoum.jpg
 wwwroot\images\gharbia.png
 wwwroot\images\giza.jpg

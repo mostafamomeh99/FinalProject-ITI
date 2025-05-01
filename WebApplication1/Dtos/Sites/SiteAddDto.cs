@@ -16,7 +16,7 @@ namespace WebApplication1.Dtos.Sites
         public string Name { get; set; }
         [Required(ErrorMessage = "description is required")]
         [MinLength(3, ErrorMessage = "description is too short")]
-        [RegularExpression(@"^[a-zA-Z][a-zA-Z\s]{2,200}[0-9]*$", ErrorMessage = "Description  is invalid")]
+        [RegularExpression(@"^[a-zA-Z][a-zA-Z\s]{2,500}[0-9]*$", ErrorMessage = "Description  is invalid")]
         public string Description { get; set; }
         [Required(ErrorMessage = "government is required")]
         //[GovernmentIdExisting]
