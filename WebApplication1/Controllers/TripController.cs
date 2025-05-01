@@ -32,8 +32,13 @@ namespace WebApplication1.Controllers
             if (pagenumber <= 0) { return BadRequest("Invalid page number."); }
 
             List<TripGetDto> trips = new List<TripGetDto>();
-            var dbTrips = unitOFWork.Trips.GetAllWith(              
-              skip: ((pagenumber - 1) * ConstantProject.NumberOfData), take: ConstantProject.NumberOfData);
+
+            // Renamed the variable to avoid conflict
+            var dbTripsList = unitOFWork.Trips.GetAllWith(
+                new[] { "IncludedItems", "ExcludedItems" }, // Pass the includes as a string array
+                skip: ((pagenumber - 1) * ConstantProject.NumberOfData),
+                take: ConstantProject.NumberOfData
+            );
 
             var ratings = await unitOFWork.Ratings.GetWithGroup(e => e.TripId).Select(
                 group =>
@@ -48,7 +53,7 @@ namespace WebApplication1.Controllers
               }
                 ).ToDictionaryAsync(item => item.key, item => item.value);
 
-            foreach (var trip in dbTrips)
+            foreach (var trip in dbTripsList) // Updated variable name here as well
             {
                 trips.Add(new TripGetDto()
                 {
@@ -59,12 +64,12 @@ namespace WebApplication1.Controllers
                     EndDate = trip.EndDate,
                     Duration = trip.Duration,
                     Money = trip.Money,
-                    TripRating =((ratings==null|| !ratings.ContainsKey(trip.TripId) )
-                    ? 0: ratings[trip.TripId].average) ,
-                    UserNumbersRating = ((ratings == null || !ratings.ContainsKey(trip.TripId))
-                    ? 0 : ratings[trip.TripId].count),
                     AvailablePeople = trip.AvailablePeople,
                     MaxPeople = trip.MaxPeople,
+                    TripRating = (ratings == null || !ratings.ContainsKey(trip.TripId)) ? 0 : ratings[trip.TripId].average,
+                    UserNumbersRating = (ratings == null || !ratings.ContainsKey(trip.TripId)) ? 0 : ratings[trip.TripId].count,
+                    IncludedItems = trip.IncludedItems?.Select(i => i.Item).ToList() ?? new(),
+                    ExcludedItems = trip.ExcludedItems?.Select(e => e.Item).ToList() ?? new()
                 });
             }
 
@@ -74,15 +79,29 @@ namespace WebApplication1.Controllers
         [HttpGet("{tripId}")]
         public async Task<IActionResult> GetTripSiteDetails([FromRoute] string tripId)
         {
-            var trip = unitOFWork.Trips.Findme(e => e.TripId== tripId);
-            if (trip == null) {
-                return BadRequest(new { message = "trip not found" }); }
+            // Check if the trip exists
+            var trip = unitOFWork.Trips.Findme(e => e.TripId == tripId);
+            if (trip == null)
+            {
+                return BadRequest(new { message = "Trip not found" });
+            }
 
-            var tripwithdetails = await unitOFWork.TripSiteDetails
-                .UseOurSql("GetTripSiteDetails", tripId);
+            try
+            {
+                // Execute stored procedure using the correct method
+                var tripWithDetails = await unitOFWork.TripSiteDetails
+                    .UseOurSql("GetTripSiteDetails", tripId);
 
-            return Ok(tripwithdetails);
+                // Return the details of the trip with its sites
+                return Ok(tripWithDetails);
+            }
+            catch (Exception ex)
+            {
+                // Handle error in case of stored procedure execution failure
+                return StatusCode(500, new { message = "An error occurred while fetching trip details.", error = ex.Message });
+            }
         }
+
 
 
         //[HttpGet("{id}")]
@@ -175,8 +194,11 @@ namespace WebApplication1.Controllers
                 AvailablePeople = trip.AvailablePeople,
                 MaxPeople = trip.MaxPeople,
                 TripRating = 0,
-                UserNumbersRating = 0
+                UserNumbersRating = 0,
+                IncludedItems = trip.IncludedItems?.Select(i => i.Item).ToList() ?? new(),
+                ExcludedItems = trip.ExcludedItems?.Select(e => e.Item).ToList() ?? new()
             };
+
 
             return Ok(result);
         }
@@ -309,7 +331,11 @@ namespace WebApplication1.Controllers
             // Update sites
             if (tripDto.Sites != null)
             {
-                dbTrip.Sites = unitOFWork.Sites.FindAll(s => tripDto.Sites.Contains(s.SiteId)).ToList();
+                var updatedSites = unitOFWork.Sites.FindAll(
+         s => tripDto.Sites.Contains(s.SiteId)).ToList();
+
+                // Update the navigation property
+                dbTrip.Sites = updatedSites;
             }
             try
             {

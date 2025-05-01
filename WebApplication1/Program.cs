@@ -9,6 +9,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Models;
 using RepositoryFactory;
+using Stripe;
 using System.Security.Claims;
 using System.Text;
 using WebApplication1.BackGroundJobs;
@@ -84,6 +85,9 @@ namespace WebApplication1
          }
      };
  });
+            //strip configuration
+
+            StripeConfiguration.ApiKey = builder.Configuration["StripeSettings:SecretKey"];
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

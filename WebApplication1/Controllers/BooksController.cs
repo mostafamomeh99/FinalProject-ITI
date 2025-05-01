@@ -39,6 +39,7 @@ namespace WebApplication1.Controllers
                 NumberDays = b.NumberDays,
                 NumberPeople = b.NumberPeople,
                 AmountMoney = b.AmountMoney,
+
             });
 
             return Ok(bookDtos);
