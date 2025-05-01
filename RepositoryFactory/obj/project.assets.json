@@ -3116,23 +3116,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mosta\\.nuget\\packages\\": {},
+    "C:\\Users\\El-Wattaneya\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\RepositoryFactory\\RepositoryFactory.csproj",
+      "projectUniqueName": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\RepositoryFactory\\RepositoryFactory.csproj",
       "projectName": "RepositoryFactory",
-      "projectPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\RepositoryFactory\\RepositoryFactory.csproj",
-      "packagesPath": "C:\\Users\\mosta\\.nuget\\packages\\",
-      "outputPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\RepositoryFactory\\obj\\",
+      "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\RepositoryFactory\\RepositoryFactory.csproj",
+      "packagesPath": "C:\\Users\\El-Wattaneya\\.nuget\\packages\\",
+      "outputPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\RepositoryFactory\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\mosta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\El-Wattaneya\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3147,8 +3147,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\IRepository\\IRepositoryService.csproj": {
-              "projectPath": "D:\\iti\\Final Project\\backend\\FinalProject-ITI\\IRepository\\IRepositoryService.csproj"
+            "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj": {
+              "projectPath": "G:\\mostafa  momeh\\web development\\ITI\\final project\\backend\\IRepository\\IRepositoryService.csproj"
             }
           }
         }
@@ -3202,7 +3202,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
