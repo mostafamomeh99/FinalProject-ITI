@@ -32,6 +32,7 @@ namespace WebApplication1.Controllers
             {
                 BookId = b.BookId,
                 TripId = b.TripId,
+                TripName = b.Trip?.Name,
                 ApplicationUserId = b.ApplicationUserId,
                 DateBook = b.DateBook,
                 StartComingDate = b.StartComingDate,
@@ -59,6 +60,7 @@ namespace WebApplication1.Controllers
             {
                 BookId = book.BookId,
                 TripId = book.TripId,
+                TripName = book.Trip?.Name,
                 ApplicationUserId = book.ApplicationUserId,
                 DateBook = book.DateBook,
                 StartComingDate = book.StartComingDate,
@@ -184,5 +186,163 @@ namespace WebApplication1.Controllers
                 });
             }
         }
+
+        // DELETE: api/Books/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBook(string id)
+        {
+            var book = _unitOfWork.Books.Findme(b => b.BookId == id);
+            if (book == null)
+            {
+                return NotFound(new ProblemDetails
+                {
+                    Title = "Book Not Found",
+                    Detail = $"No booking found with ID: {id}",
+                    Status = StatusCodes.Status404NotFound
+                });
+            }
+
+            await _unitOfWork.BeginTransactionAsync();
+
+            _unitOfWork.Books.Delete(book);
+            var result = _unitOfWork.Compelet();
+
+            if (result <= 0)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                return StatusCode(StatusCodes.Status500InternalServerError, new ProblemDetails
+                {
+                    Title = "Delete Failed",
+                    Detail = "Failed to delete the booking",
+                    Status = StatusCodes.Status500InternalServerError
+                });
+            }
+
+            await _unitOfWork.CommitTransactionAsync();
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<BookDetailDto>> UpdateBook(string id, [FromBody] UpdateBookDto updateDto)
+        {
+
+            try
+            {
+                // 1. Validate input
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(new ValidationProblemDetails(ModelState));
+                }
+
+                // 2. Validate dates
+                if (updateDto.StartComingDate >= updateDto.EndComingDate)
+                {
+                    return BadRequest(new ProblemDetails
+                    {
+                        Title = "Invalid Dates",
+                        Detail = "End date must be after start date",
+                        Status = StatusCodes.Status400BadRequest
+                    });
+                }
+
+                // 3. Get existing book with trip and user
+                var book = _unitOfWork.Books.GetdetailWith(BookIncludes, b => b.BookId == id);
+                if (book == null)
+                {
+                    return NotFound(new ProblemDetails
+                    {
+                        Title = "Booking Not Found",
+                        Detail = $"No booking found with ID {id}",
+                        Status = StatusCodes.Status404NotFound
+                    });
+                }
+
+                // 4. Get the trip based on name
+                var trip = _unitOfWork.Trips.FindAll(t => t.Name == updateDto.TripName).FirstOrDefault();
+                if (trip == null)
+                {
+                    return NotFound(new ProblemDetails
+                    {
+                        Title = "Trip Not Found",
+                        Detail = $"Trip with name '{updateDto.TripName}' doesn't exist",
+                        Status = StatusCodes.Status404NotFound
+                    });
+                }
+
+                // 5. Calculate days and total amount
+                var numberOfDays = updateDto.NumberDays ??
+                                 (updateDto.EndComingDate - updateDto.StartComingDate).Days;
+
+                var amountMoney = updateDto.AmountMoney ??
+                                (trip.Money * updateDto.NumberPeople * numberOfDays);
+
+                // 6. Update fields
+                book.TripId = trip.TripId;
+                book.StartComingDate = updateDto.StartComingDate.Date;
+                book.EndComingDate = updateDto.EndComingDate.Date;
+                book.NumberDays = numberOfDays;
+                book.NumberPeople = updateDto.NumberPeople;
+                book.AmountMoney = amountMoney;
+
+                // 7. Save with transaction
+                await _unitOfWork.BeginTransactionAsync();
+
+                _unitOfWork.Books.Update(book);
+                var affected = _unitOfWork.Compelet();
+
+                if (affected <= 0)
+                {
+                    await _unitOfWork.RollbackTransactionAsync();
+                    return StatusCode(StatusCodes.Status500InternalServerError, new ProblemDetails
+                    {
+                        Title = "Update Failed",
+                        Detail = "No records were updated.",
+                        Status = StatusCodes.Status500InternalServerError
+                    });
+                }
+
+                await _unitOfWork.CommitTransactionAsync();
+
+                return Ok(new BookDetailDto
+                {
+                    BookId = book.BookId,
+                    TripId = book.TripId,
+                    TripName = trip.Name,
+                    DateBook = book.DateBook,
+                    StartComingDate = book.StartComingDate,
+                    EndComingDate = book.EndComingDate,
+                    NumberDays = book.NumberDays,
+                    NumberPeople = book.NumberPeople,
+                    AmountMoney = book.AmountMoney,
+
+                });
+            }
+            catch (DbUpdateException dbEx)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+
+                var errorMessage = dbEx.InnerException?.Message ?? dbEx.Message;
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ProblemDetails
+                {
+                    Title = "Database Error",
+                    Detail = $"Database operation failed: {errorMessage}",
+                    Status = StatusCodes.Status500InternalServerError
+                });
+            }
+            catch (Exception ex)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+
+                return StatusCode(StatusCodes.Status500InternalServerError, new ProblemDetails
+                {
+                    Title = "Server Error",
+                    Detail = $"An unexpected error occurred: {ex.Message}",
+                    Status = StatusCodes.Status500InternalServerError
+                });
+            }
+        }
     }
 }
+
+ 
