@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApplication1.Dtos.Sites;
 
 namespace WebApplication1.Dtos.Trips
 {
@@ -16,14 +17,11 @@ namespace WebApplication1.Dtos.Trips
         public int Duration { get; set; }
         public decimal Money { get; set; }
         public int AvailablePeople { get; set; }
-        public double TripRating { get; set; }
-        public int UserNumbersRating { get; set; }
-        public int RatingValue { get; set; } = 5;
         public int MaxPeople { get; set; }
-        public bool IsDeleted { get; set; }
-        public bool OutOfDate { get; set; }
+        public List<string> IncludedItems { get; set; } = new List<string>();
+        public List<string> ExcludedItems { get; set; } = new List<string>();
+        public List<string> Sites { get; set; } = new List<string>();
+        public List<TripImageDto> TripImages { get; set; } = new List<TripImageDto>();
 
-        public List<string> IncludedItems { get; set; } = new();
-        public List<string> ExcludedItems { get; set; } = new();
     }
 }

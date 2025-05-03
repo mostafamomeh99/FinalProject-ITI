@@ -1,15 +1,15 @@
 ﻿using IRepositoryService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.EntityFrameworkCore;
 using Models;
-using Models.StoredprocMapping;
 using RepositoryFactory;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using WebApplication1.Const;
 using WebApplication1.Dtos.Trips;
+using WebApplication1.Middlewares.ExceptionFeatures;
 
 namespace WebApplication1.Controllers
 {
@@ -17,7 +17,6 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class TripController : ControllerBase
     {
-
         private readonly IUnitOfWork unitOFWork;
 
         public TripController(IUnitOfWork unitOFWork)
@@ -25,37 +24,21 @@ namespace WebApplication1.Controllers
             this.unitOFWork = unitOFWork;
         }
 
-        // for user
         [HttpGet]
-        public async Task<IActionResult> GetTrips([FromQuery] int pagenumber)
+        public IActionResult GetTrips([FromQuery] int pagenumber)
         {
-            if (pagenumber <= 0) { return BadRequest("Invalid page number."); }
+            if (pagenumber <= 0) { return BadRequest(new { message = "Invalid page number." }); }
 
             List<TripGetDto> trips = new List<TripGetDto>();
-
-            // Renamed the variable to avoid conflict
-            var dbTripsList = unitOFWork.Trips.GetAllWith(
-                new[] { "IncludedItems", "ExcludedItems" }, // Pass the includes as a string array
-                skip: ((pagenumber - 1) * ConstantProject.NumberOfData),
-                take: ConstantProject.NumberOfData
+            var dbTrips = unitOFWork.Trips.GetAllWith(
+                new[] { "IncludedItems", "ExcludedItems", "Sites", "TripImages" },
+                take: ConstantProject.NumberOfData,
+                skip: ((pagenumber - 1) * ConstantProject.NumberOfData)
             );
 
-            var ratings = await unitOFWork.Ratings.GetWithGroup(e => e.TripId).Select(
-                group =>
-              new
-              {
-                  value = new
-                  {
-                      average = group.Average(e => e.UserRate),
-                      count = group.Count()
-                  },
-                  key = group.Key
-              }
-                ).ToDictionaryAsync(item => item.key, item => item.value);
-
-            foreach (var trip in dbTripsList) // Updated variable name here as well
+            foreach (var trip in dbTrips)
             {
-                trips.Add(new TripGetDto()
+                var tripDto = new TripGetDto()
                 {
                     TripId = trip.TripId,
                     Name = trip.Name,
@@ -66,154 +49,40 @@ namespace WebApplication1.Controllers
                     Money = trip.Money,
                     AvailablePeople = trip.AvailablePeople,
                     MaxPeople = trip.MaxPeople,
-                    TripRating = (ratings == null || !ratings.ContainsKey(trip.TripId)) ? 0 : ratings[trip.TripId].average,
-                    UserNumbersRating = (ratings == null || !ratings.ContainsKey(trip.TripId)) ? 0 : ratings[trip.TripId].count,
-                    IncludedItems = trip.IncludedItems?.Select(i => i.Item).ToList() ?? new(),
-                    ExcludedItems = trip.ExcludedItems?.Select(e => e.Item).ToList() ?? new()
-                });
+                    IncludedItems = trip.IncludedItems?.Select(i => i.Item).ToList() ?? new List<string>(),
+                    ExcludedItems = trip.ExcludedItems?.Select(e => e.Item).ToList() ?? new List<string>(),
+                    Sites = trip.Sites?.Select(s => s.SiteId).ToList() ?? new List<string>()
+                };
+
+                foreach (var img in trip.TripImages)
+                {
+                    tripDto.TripImages.Add(new TripImageDto()
+                    {
+                        Id = img.Id,
+                        TripId = trip.TripId,
+                        ImageUrl = $"{Request.Scheme}://{Request.Host}/images/{img.ImageName}"
+                    });
+                }
+                trips.Add(tripDto);
             }
 
             return Ok(trips);
         }
 
-        [HttpGet("{tripId}")]
-        public async Task<IActionResult> GetTripSiteDetails([FromRoute] string tripId)
-        {
-            // Check if the trip exists
-            var trip = unitOFWork.Trips.Findme(e => e.TripId == tripId);
-            if (trip == null)
-            {
-                return BadRequest(new { message = "Trip not found" });
-            }
-
-            try
-            {
-                // Execute stored procedure using the correct method
-                var tripWithDetails = await unitOFWork.TripSiteDetails
-                    .UseOurSql("GetTripSiteDetails", tripId);
-
-                // Return the details of the trip with its sites
-                return Ok(tripWithDetails);
-            }
-            catch (Exception ex)
-            {
-                // Handle error in case of stored procedure execution failure
-                return StatusCode(500, new { message = "An error occurred while fetching trip details.", error = ex.Message });
-            }
-        }
-
-
-
-        //[HttpGet("{id}")]
-        //public IActionResult GetTripById([FromRoute] string tripid, [FromQuery] int pagenumber)
-        //{
-
-
-        //    return  _context.Set<TripSiteDetailDto>()
-        //.FromSqlInterpolated($"EXEC GetTripSiteDetails @tripid = {tripId}")
-        //.ToList();
-
-        //    return Ok(trips);
-        //}
-
-        //// PUT: api/Trip
-        //[HttpPut]
-        //public IActionResult UpdateTrip([FromBody] TripUpdateDto tripDto)
-        //{
-        //    if (tripDto == null) { return BadRequest(new { message = "Invalid trip data." }); }
-
-        //    var dbTrip = unitOFWork.Trips.Findme(e => e.TripId == tripDto.TripId);
-        //    if (dbTrip == null) return BadRequest(new { message = "Trip not found." });
-
-        //    dbTrip.Name = tripDto.Name;
-        //    dbTrip.Description = tripDto.Description;
-        //    dbTrip.StartDate = tripDto.StartDate;
-        //    dbTrip.EndDate = tripDto.EndDate;
-        //    dbTrip.Duration = tripDto.Duration;
-        //    dbTrip.Money = tripDto.Money;
-        //    dbTrip.AvailablePeople = tripDto.AvailablePeople;
-        //    dbTrip.MaxPeople = tripDto.MaxPeople;
-        //    dbTrip.IsDeleted = tripDto.IsDeleted ?? dbTrip.IsDeleted;
-        //    dbTrip.OutOfDate = tripDto.OutOfDate ?? dbTrip.OutOfDate;
-
-        //    // Update included items
-        //    if (tripDto.IncludedItems != null)
-        //    {
-        //        dbTrip.IncludedItems = tripDto.IncludedItems.Select(i => new TripIncluded { Name = i }).ToList();
-        //    }
-
-        //    // Update excluded items
-        //    if (tripDto.ExcludedItems != null)
-        //    {
-        //        dbTrip.ExcludedItems = tripDto.ExcludedItems.Select(i => new TripExcluded { Name = i }).ToList();
-        //    }
-
-        //    // Update sites
-        //    if (tripDto.Sites != null)
-        //    {
-        //        dbTrip.Sites = tripDto.Sites.Select(s => new Site { SiteId = s }).ToList();
-        //    }
-
-        //    unitOFWork.Compelet(); // Save changes
-
-        //    return Ok(new { message = "Trip updated successfully" });
-        //}
-
-        // DELETE: api/Trip/{id}
-        [HttpDelete("{id}")]
-        public IActionResult DeleteTrip([FromRoute] string id)
-        {
-            var trip = unitOFWork.Trips.Findme(e => e.TripId == id);
-            if (trip == null) return BadRequest(new { message = "Trip not found." });
-
-            unitOFWork.Trips.Delete(trip);
-            unitOFWork.Compelet(); // Save changes
-
-            return Ok(new { message = "Trip deleted successfully" });
-        }
-
-
-        /////////Get trip by id
-        [HttpGet("single/{id}")]
-        public IActionResult GetTripById([FromRoute] string id)
-        {
-            var trip = unitOFWork.Trips.Findme(e => e.TripId == id);
-
-            if (trip == null)
-                return NotFound(new { message = "Trip not found" });
-
-            var result = new TripGetDto
-            {
-                TripId = trip.TripId,
-                Name = trip.Name,
-                Description = trip.Description,
-                StartDate = trip.StartDate,
-                EndDate = trip.EndDate,
-                Duration = trip.Duration,
-                Money = trip.Money,
-                AvailablePeople = trip.AvailablePeople,
-                MaxPeople = trip.MaxPeople,
-                TripRating = 0,
-                UserNumbersRating = 0,
-                IncludedItems = trip.IncludedItems?.Select(i => i.Item).ToList() ?? new(),
-                ExcludedItems = trip.ExcludedItems?.Select(e => e.Item).ToList() ?? new()
-            };
-
-
-            return Ok(result);
-        }
-
-
-        /// /////// Create a new trip
-   
         [HttpPost]
-        public IActionResult CreateTrip([FromBody] TripCreateDto tripDto)
+        [Consumes("multipart/form-data")]
+        public IActionResult CreateTrip([FromForm] TripCreateDto tripDto)
         {
             if (tripDto == null)
             {
                 return BadRequest(new { message = "Invalid trip data." });
             }
-            // Validate required fields
+
+            if (tripDto.TripImages == null || !tripDto.TripImages.Any())
+            {
+                return BadRequest(new { message = "At least one image is required." });
+            }
+
             if (string.IsNullOrEmpty(tripDto.Name) || tripDto.StartDate == default || tripDto.EndDate == default)
             {
                 return BadRequest(new { message = "Name, StartDate, and EndDate are required." });
@@ -221,7 +90,7 @@ namespace WebApplication1.Controllers
 
             var newTrip = new Trip
             {
-                TripId = tripDto.tripId,
+                TripId = Guid.NewGuid().ToString(),
                 Name = tripDto.Name,
                 Description = tripDto.Description,
                 StartDate = tripDto.StartDate,
@@ -232,7 +101,6 @@ namespace WebApplication1.Controllers
                 MaxPeople = tripDto.MaxPeople,
                 IsDeleted = tripDto.IsDeleted ?? false,
                 OutOfDate = tripDto.OutOfDate ?? false,
-              
             };
 
             // Add included items
@@ -254,16 +122,46 @@ namespace WebApplication1.Controllers
             }
 
             // Add sites
+            if (tripDto.Sites != null && tripDto.Sites.Any())
+            {
+                var sites = unitOFWork.Sites.FindAll(s => tripDto.Sites.Contains(s.SiteId)).ToList();
+                newTrip.Sites = sites;
+            }
 
-                if (tripDto.Sites != null && tripDto.Sites.Any())
-                {
-                    var sites = unitOFWork.Sites.FindAll(s => tripDto.Sites.Select(id => id.ToString()).Contains(s.SiteId)).ToList();
-                    newTrip.Sites = sites;
-                }
-                
             try
             {
                 unitOFWork.Trips.Addone(newTrip);
+                unitOFWork.Compelet();
+
+                // Handle images
+                string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+                if (!Directory.Exists(imagesDirectory))
+                {
+                    Directory.CreateDirectory(imagesDirectory);
+                }
+
+                var tripImages = new List<TripImage>();
+                foreach (var image in tripDto.TripImages)
+                {
+                    if (image.Length > 0)
+                    {
+                        string fileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+                        string filePath = Path.Combine(imagesDirectory, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            image.CopyTo(stream);
+                        }
+
+                        tripImages.Add(new TripImage()
+                        {
+                            ImageName = fileName,
+                            TripId = newTrip.TripId
+                        });
+                    }
+                }
+
+                unitOFWork.TripImages.AddRange(tripImages);
                 unitOFWork.Compelet();
 
                 return CreatedAtAction(nameof(GetTripById), new { id = newTrip.TripId },
@@ -275,70 +173,148 @@ namespace WebApplication1.Controllers
             }
         }
 
-        //update trip
-        [HttpPut]
-        public IActionResult UpdateTrip([FromBody] TripUpdateDto tripDto)
+        [HttpGet("{id}")]
+        public IActionResult GetTripById([FromRoute] string id)
         {
-            if (tripDto == null)
-            {
-                return BadRequest(new { message = "Invalid trip data." });
-            }
+            var trip = unitOFWork.Trips.Findme(e => e.TripId == id,
+                new[] { "IncludedItems", "ExcludedItems", "Sites", "TripImages" });
 
-            var dbTrip = unitOFWork.Trips.Findme(e => e.TripId == tripDto.TripId);
-            if (dbTrip == null)
-            {
-                return NotFound(new { message = "Trip not found." });
-            }
+            if (trip == null)
+                return NotFound(new { message = "Trip not found" });
 
-            // Update basic properties
-            dbTrip.Name = tripDto.Name ?? dbTrip.Name;
-            dbTrip.Description = tripDto.Description ?? dbTrip.Description;
-            dbTrip.StartDate = tripDto.StartDate;
-            dbTrip.EndDate = tripDto.EndDate;
-            dbTrip.Duration = tripDto.Duration;
-            dbTrip.Money = tripDto.Money;
-            dbTrip.AvailablePeople = tripDto.AvailablePeople;
-            dbTrip.MaxPeople = tripDto.MaxPeople;
-            dbTrip.IsDeleted = tripDto.IsDeleted ?? dbTrip.IsDeleted;
-            dbTrip.OutOfDate = tripDto.OutOfDate ?? dbTrip.OutOfDate;
-
-            // Update included items
-            if (tripDto.IncludedItems != null)
+            var result = new TripGetDto
             {
-                // Clear existing included items
-                unitOFWork.TripIncludeds.DeleteRange(dbTrip.IncludedItems);
-                // Add new ones
-                dbTrip.IncludedItems = tripDto.IncludedItems.Select(i => new TripIncluded
+                TripId = trip.TripId,
+                Name = trip.Name,
+                Description = trip.Description,
+                StartDate = trip.StartDate,
+                EndDate = trip.EndDate,
+                Duration = trip.Duration,
+                Money = trip.Money,
+                AvailablePeople = trip.AvailablePeople,
+                MaxPeople = trip.MaxPeople,
+                IncludedItems = trip.IncludedItems?.Select(i => i.Item).ToList() ?? new List<string>(),
+                ExcludedItems = trip.ExcludedItems?.Select(e => e.Item).ToList() ?? new List<string>(),
+                Sites = trip.Sites?.Select(s => s.SiteId).ToList() ?? new List<string>(),
+            };
+
+            foreach (var img in trip.TripImages)
+            {
+                result.TripImages
+                    .Add(new TripImageDto()
                 {
-                    Item = i,
-                    TripId = dbTrip.TripId
-                }).ToList();
+                    Id = img.Id,
+                    TripId = trip.TripId,
+                    ImageUrl = $"{Request.Scheme}://{Request.Host}/images/{img.ImageName}"
+                });
             }
 
-            // Update excluded items
-            if (tripDto.ExcludedItems != null)
-            {
-                // Clear existing excluded items
-                unitOFWork.TripExcludeds.DeleteRange(dbTrip.ExcludedItems);
-                // Add new ones
-                dbTrip.ExcludedItems = tripDto.ExcludedItems.Select(i => new TripExcluded
-                {
-                    Item = i,
-                    TripId = dbTrip.TripId
-                }).ToList();
-            }
+            return Ok(result);
+        }
 
-            // Update sites
-            if (tripDto.Sites != null)
-            {
-                var updatedSites = unitOFWork.Sites.FindAll(
-         s => tripDto.Sites.Contains(s.SiteId)).ToList();
-
-                // Update the navigation property
-                dbTrip.Sites = updatedSites;
-            }
+        [HttpPut]
+        [Consumes("multipart/form-data")]
+        public IActionResult UpdateTrip([FromForm] TripUpdateDto tripDto)
+        {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    var errors = ModelState
+                        .Where(e => e.Value.Errors.Count > 0)
+                        .Select(e => new {
+                            Field = e.Key,
+                            Errors = e.Value.Errors.Select(error => error.ErrorMessage)
+                        }).ToList();
+
+                    return BadRequest(new
+                    {
+                        message = "Validation failed",
+                        errors = errors
+                    });
+                }
+
+                bool hasNewImages = tripDto.Images != null && tripDto.Images.Any();
+
+                var dbTrip = unitOFWork.Trips.Findme(e => e.TripId == tripDto.TripId,
+                    new[] { "IncludedItems", "ExcludedItems", "Sites", "TripImages" });
+                if (dbTrip == null)
+                {
+                    return NotFound(new { message = "Trip not found." });
+                }
+
+                // Update basic properties
+                dbTrip.Name = tripDto.Name ?? dbTrip.Name;
+                dbTrip.Description = tripDto.Description ?? dbTrip.Description;
+                dbTrip.StartDate = tripDto.StartDate;
+                dbTrip.EndDate = tripDto.EndDate;
+                dbTrip.Duration = tripDto.Duration;
+                dbTrip.Money = tripDto.Money;
+                dbTrip.AvailablePeople = tripDto.AvailablePeople;
+                dbTrip.MaxPeople = tripDto.MaxPeople;
+                dbTrip.IsDeleted = tripDto.IsDeleted ?? dbTrip.IsDeleted;
+                dbTrip.OutOfDate = tripDto.OutOfDate ?? dbTrip.OutOfDate;
+
+                // Update included items
+                if (tripDto.IncludedItems != null)
+                {
+                    unitOFWork.TripIncludeds.DeleteRange(dbTrip.IncludedItems);
+                    dbTrip.IncludedItems = tripDto.IncludedItems.Select(i => new TripIncluded
+                    {
+                        Item = i,
+                        TripId = dbTrip.TripId
+                    }).ToList();
+                }
+
+                // Update excluded items
+                if (tripDto.ExcludedItems != null)
+                {
+                    unitOFWork.TripExcludeds.DeleteRange(dbTrip.ExcludedItems);
+                    dbTrip.ExcludedItems = tripDto.ExcludedItems.Select(i => new TripExcluded
+                    {
+                        Item = i,
+                        TripId = dbTrip.TripId
+                    }).ToList();
+                }
+
+                // Update sites
+                if (tripDto.Sites != null)
+                {
+                    var updatedSites = unitOFWork.Sites.FindAll(s => tripDto.Sites.Contains(s.SiteId)).ToList();
+                    dbTrip.Sites = updatedSites;
+                }
+
+                // Handle images
+                string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+                if (!Directory.Exists(imagesDirectory))
+                {
+                    Directory.CreateDirectory(imagesDirectory);
+                }
+
+                // Add new images
+                if (hasNewImages)
+                {
+                    foreach (var image in tripDto.Images)
+                    {
+                        if (image.Length > 0)
+                        {
+                            string fileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+                            string filePath = Path.Combine(imagesDirectory, fileName);
+
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                image.CopyTo(stream);
+                            }
+
+                            unitOFWork.TripImages.Addone(new TripImage
+                            {
+                                TripId = tripDto.TripId,
+                                ImageName = fileName
+                            });
+                        }
+                    }
+                }
+
                 unitOFWork.Compelet();
                 return Ok(new { message = "Trip updated successfully" });
             }
@@ -348,7 +324,60 @@ namespace WebApplication1.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTrip([FromRoute] string id)
+        {
+            var trip = unitOFWork.Trips.Findme(e => e.TripId == id, new[] { "TripImages" });
+            if (trip == null) return BadRequest(new { message = "Trip not found." });
 
+            // Delete images from filesystem
+            string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+            foreach (var img in trip.TripImages)
+            {
+                string fullPath = Path.Combine(imagesDirectory, img.ImageName);
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+            }
+
+            unitOFWork.TripImages.DeleteRange(trip.TripImages);
+            unitOFWork.Trips.Delete(trip);
+            unitOFWork.Compelet();
+
+            return Ok(new { message = "Trip deleted successfully" });
+        }
+
+        [HttpDelete("by-name/{name}")]
+        public IActionResult DeleteTripByName([FromRoute] string name)
+        {
+            // Find the trip by name (you may want to make it case-insensitive or exact match based on your need)
+            var trip = unitOFWork.Trips.Findme(
+                e => e.Name.ToLower() == name.ToLower(),
+                new[] { "TripImages" });
+
+            if (trip == null)
+                return BadRequest(new { message = "Trip not found." });
+
+            // Delete images from filesystem
+            string imagesDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
+            foreach (var img in trip.TripImages)
+            {
+                string fullPath = Path.Combine(imagesDirectory, img.ImageName);
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+            }
+
+            // Remove related images and the trip itself
+            unitOFWork.TripImages.DeleteRange(trip.TripImages);
+            unitOFWork.Trips.Delete(trip);
+            unitOFWork.Compelet();
+
+            return Ok(new { message = "Trip deleted successfully by name." });
+        }
 
     }
+
 }

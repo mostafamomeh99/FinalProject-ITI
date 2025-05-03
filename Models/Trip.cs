@@ -20,6 +20,9 @@ namespace Models
         public ICollection<TripIncluded> IncludedItems { get; set; } = new List<TripIncluded>();
         public ICollection<TripExcluded> ExcludedItems { get; set; }= new List<TripExcluded>();
         public ICollection<Site> Sites { get; set; } = new List<Site>();
+
+        public ICollection<TripImage> TripImages { get; set; } = new List<TripImage>();
+       
         public ICollection<TripSites> TripSites { get; set; } = new List<TripSites>();
         public ICollection<Rating> Ratings { get; set; } = new List<Rating>();
         public Transportation Transportation { get; set; }

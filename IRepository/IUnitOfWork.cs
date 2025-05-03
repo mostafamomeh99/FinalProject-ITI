@@ -21,6 +21,7 @@ namespace IRepositoryService
         public IDatabaseRepository<Site> Sites { get; }
         public IDatabaseRepository<Transportation> Transportations { get; }
         public IDatabaseRepository<SiteImage> SiteImages { get; }
+        public IDatabaseRepository<TripImage> TripImages { get; }
         public IDatabaseRepository<TripExcluded> TripExcludeds { get; }
         public IDatabaseRepository<TripIncluded> TripIncludeds { get; }
         public ISqlProcedureService<TripSiteDetailDto> TripSiteDetails { get;}

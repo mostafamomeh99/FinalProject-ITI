@@ -35,6 +35,7 @@ namespace RepositoryFactory
         public IDatabaseRepository<TripExcluded> TripExcludeds { get; private set; }
         public IDatabaseRepository<TripIncluded> TripIncludeds { get; private set; }
 
+        public IDatabaseRepository<TripImage> TripImages { get; private set; }
         public ISqlProcedureService<TripSiteDetailDto> TripSiteDetails { get; private set; }
         public UnitOfWork(ApplicationDbContext context, IEmailService emailService, IConfiguration configuration
   , UserManager<ApplicationUser> userManager, IOtpService otpService ,  HttpClient httpClient)
@@ -49,6 +50,7 @@ namespace RepositoryFactory
             TripIncludeds = new DatabaseRepository<TripIncluded>(context);
             TripExcludeds = new DatabaseRepository<TripExcluded>(context);
             SiteImages = new DatabaseRepository<SiteImage>(context);
+            TripImages = new DatabaseRepository<TripImage>(context);
             Sites = new DatabaseRepository<Site>(context);
             Ratings = new DatabaseRepository<Rating>(context);
             Books = new DatabaseRepository<Book>(context);

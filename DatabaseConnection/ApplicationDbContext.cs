@@ -18,6 +18,7 @@ namespace DatabaseConnection
         public DbSet<Site> Sites { get; set; }
         public DbSet<Transportation> Transportations { get; set; }
         public DbSet<SiteImage> SiteImages { get; set; }
+        public DbSet<TripImage> TripImages { get; set; }
         public DbSet<TripExcluded> TripExcludeds { get; set; }
         public DbSet<TripIncluded> TripIncludeds { get; set; }
         public DbSet<TripSiteDetailDto> TripSiteDetails { get; set; }

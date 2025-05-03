@@ -22,5 +22,6 @@ namespace WebApplication1.Dtos.Trips
         public List<string> IncludedItems { get; set; } = new List<string>();
         public List<string> ExcludedItems { get; set; } = new List<string>();
         public List<string> Sites { get; set; } = new List<string>();
+        public List<IFormFile>? Images { get; set; }
     }
 }

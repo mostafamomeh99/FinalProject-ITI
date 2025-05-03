@@ -628,6 +628,29 @@ namespace DatabaseConnection.Migrations
                     b.ToTable("TripExcludeds");
                 });
 
+            modelBuilder.Entity("Models.TripImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImageName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TripId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TripId");
+
+                    b.ToTable("TripImages");
+                });
+
             modelBuilder.Entity("Models.TripIncluded", b =>
                 {
                     b.Property<int>("Id")
@@ -921,6 +944,17 @@ namespace DatabaseConnection.Migrations
                     b.Navigation("Trip");
                 });
 
+            modelBuilder.Entity("Models.TripImage", b =>
+                {
+                    b.HasOne("Models.Trip", "Trip")
+                        .WithMany("TripImages")
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Trip");
+                });
+
             modelBuilder.Entity("Models.TripIncluded", b =>
                 {
                     b.HasOne("Models.Trip", "Trip")
@@ -1018,6 +1052,8 @@ namespace DatabaseConnection.Migrations
                     b.Navigation("IncludedItems");
 
                     b.Navigation("Ratings");
+
+                    b.Navigation("TripImages");
 
                     b.Navigation("TripSites");
                 });
