@@ -600,6 +600,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebApplication1.Controllers.DashboardController",
+    "Method": "GetRecentBookings",
+    "RelativePath": "api/Dashboard/recent",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.DashboardController",
+    "Method": "GetDashboardStats",
+    "RelativePath": "api/Dashboard/stats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApplication1.Controllers.DriverController",
     "Method": "GetDrivers",
     "RelativePath": "api/Driver",
@@ -1153,6 +1173,22 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebApplication1.Controllers.TripController",
+    "Method": "DeleteTripByName",
+    "RelativePath": "api/Trip/by-name/{name}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
         "Type": "System.String",
         "IsRequired": true
       }
